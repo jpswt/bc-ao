@@ -20,17 +20,6 @@ const register = async (req, res) => {
 		if (err) {
 			return res.status(500).json({ message: `Error creating the user`, err });
 		}
-		console.log(results);
-
-		let token = JWT.sign(
-			{
-				username: username,
-				user_id: results.insertId,
-			},
-			process.env.JWT_SECRET
-		);
-		console.log(token);
-
 		return res
 			.status(200)
 			.json({ message: `User created successfully`, results, token });
@@ -87,6 +76,7 @@ const login = async (req, res) => {
 
 		return res.status(200).json({
 			message: 'Successful Login!',
+			token,
 		});
 	});
 };

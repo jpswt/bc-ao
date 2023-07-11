@@ -17,7 +17,7 @@ const verifyJWT = (req, res, next) => {
 			console.log(err);
 		}
 	} else {
-		res.status(500).json({ message: 'You are not authorized' });
+		res.status(500).send({ message: 'You are not authorized' });
 	}
 };
 
